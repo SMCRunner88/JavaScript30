@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio id="test" data-key="65" src="sounds/clap.wav"></audio>
   <audio data-key="83" src="sounds/hihat.wav"></audio>
   <audio data-key="68" src="sounds/kick.wav"></audio>
   <audio data-key="70" src="sounds/openhat.wav"></audio>
@@ -58,11 +58,21 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-    document.addEventListener('keydown', keyPress);
-    function keyPress(e) {
-      console.log(e.which);
+    document.addEventListener('keydown', playAudio);
+    let audioSelection = document.getElementsByTagName('audio')[0].getAttribute('data-key');
+    console.log(audioSelection == 65)
+    // Need to break ^ that down into a new Array and search through for matches. 
+
+
+    function playAudio(e) {
       let key = e.which;
-      if (key)
+      let audioSelection = document.getElementById('test').getAttribute('data-key');
+
+
+
+      if (key == audioSelection) {
+        document.getElementById('test').play();
+      }
     }
 
     //function audio
